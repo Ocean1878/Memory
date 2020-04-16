@@ -10,6 +10,8 @@ import Cocoa
 
 class ViewController: NSViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var labelPaareMensch: NSTextField!
     
     @IBOutlet weak var labelPaareComputer: NSTextField!
@@ -17,6 +19,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var spielstaerkeAnzeige: NSTextField!
     
     @IBOutlet weak var starkeSlider: NSSlider!
+    
+    // MARK: - Eigenschaften
     
     // das Array für die Karten
     var karten = [MemoryKarte]()
@@ -45,6 +49,7 @@ class ViewController: NSViewController {
     var spielstaerke = 5
     
     
+    // MARK: - Die Methoden
     
     // die Methode zum Initialisieren des Spielfeldes
     func initMeinSpielfeld() {
@@ -355,10 +360,18 @@ class ViewController: NSViewController {
         }
     }
     
+    // Schummeln
+    func schummel() {
+        
+    }
     
+    // MARK: - Actions
     
     @IBAction func spielStarke(_ sender: Any) {
         spielstarkeVeraendern()
+    }
+    
+    @IBAction func schummelClicked(_ sender: Any) {
     }
     
     @IBAction func neustartClicked(_ sender: Any) {
