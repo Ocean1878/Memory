@@ -170,12 +170,12 @@ class ViewController: NSViewController {
         
         if (menschPunkte > computerPunkte) && (computerPunkte + menschPunkte == 21) {
             // Dialog
-            meinDialog(header: "Hinweis", text: "Sie haben Gewonnen \n\nIhr Punktestand: \(labelPaareMensch.integerValue)\n\nPunktestand Gegner: \(labelPaareComputer.integerValue) \n\nDas Spiel ist vorbei")
+            meinDialog(header: "Hinweis", text: "Sie haben Gewonnen \n\nIhr Punktestand: \(labelPaareMensch.integerValue)\n\nPunktestand Gegner: \(labelPaareComputer.integerValue) \n\nDas Spiel ist vorbei!")
             // beenden
             NSApplication.shared.terminate(self)
         } else if (menschPunkte < computerPunkte) && (computerPunkte + menschPunkte == 21) {
             // Dialog
-            meinDialog(header: "Hinweis", text: "Sie haben verloren! \n\nPunktestand Gegner: \(labelPaareComputer.integerValue)\n\nIhr Punktestand: \(labelPaareMensch.integerValue) \n\nDas Spiel ist vorbei")
+            meinDialog(header: "Hinweis", text: "Sie haben verloren! \n\nPunktestand Gegner: \(labelPaareComputer.integerValue)\n\nIhr Punktestand: \(labelPaareMensch.integerValue) \n\nDas Spiel ist vorbei!")
             // beenden
             NSApplication.shared.terminate(self)
         }
