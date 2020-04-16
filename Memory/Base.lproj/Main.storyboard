@@ -185,6 +185,7 @@
                     <connections>
                         <outlet property="labelPaareComputer" destination="HWY-Rc-PFs" id="XNb-60-sZH"/>
                         <outlet property="labelPaareMensch" destination="ixS-9K-blX" id="cZG-Bi-74e"/>
+                        <outlet property="schummelTaste" destination="lBf-gh-fdH" id="zlU-Z7-oAE"/>
                         <outlet property="spielstaerkeAnzeige" destination="6Wc-xl-tus" id="Yg5-Wr-Ndg"/>
                         <outlet property="starkeSlider" destination="j39-Ot-bDD" id="EaI-vD-JKj"/>
                     </connections>

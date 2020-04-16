@@ -20,6 +20,9 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var starkeSlider: NSSlider!
     
+    @IBOutlet weak var schummelTaste: NSButton!
+    
+    
     // MARK: - Eigenschaften
     
     // das Array für die Karten
@@ -47,6 +50,9 @@ class ViewController: NSViewController {
     
     //für die Spielstärke
     var spielstaerke = 5
+    
+    // Timer
+    var timer = Timer()
     
     
     // MARK: - Die Methoden
@@ -361,8 +367,14 @@ class ViewController: NSViewController {
     }
     
     // Schummeln
-    func schummel() {
-        
+    @objc func schummel() {
+        for card in karten {
+            // deckt alle Karten wieder zu, die noch im Spiel sind
+            // und umgedreht sind
+            if card.getNochImSpiel() && card.getUmgedreht() {
+                card.rueckseiteZeigen(rausnehmen: false)
+            }
+        }
     }
     
     // MARK: - Actions
@@ -372,6 +384,19 @@ class ViewController: NSViewController {
     }
     
     @IBAction func schummelClicked(_ sender: Any) {
+        // Zeigt alle Karten die noch im Spiel sind und nicht
+        // umgedreht wurden
+        for card in karten {
+            if card.getNochImSpiel() && !card.getUmgedreht() {
+                card.vorderseiteZeigen()
+            }
+        }
+        
+        // blende den Button aus bevor der Timer startet
+        schummelTaste.isEnabled = false
+        
+        // setzt den Timer auf 5 Sekunden
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(schummel), userInfo: nil, repeats: false)
     }
     
     @IBAction func neustartClicked(_ sender: Any) {
