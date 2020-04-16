@@ -12,7 +12,8 @@ import Cocoa
 // Sie erbt von NSButton
 class MemoryKarte: NSButton {
 
-    // die Eigenschaften
+    // MARK: - Die Eigenschaften
+    
     // eine eindeutige ID zur Identifizierung des Bildes
     var bildID: Int!
     
@@ -31,7 +32,9 @@ class MemoryKarte: NSButton {
     // für das Spielfeld
     var spiel: ViewController!
     
-    // der Initialisierer
+    
+    // MARK: - Der Initialisierer
+    
     // er setzt die Größe, die Bilder und die Position
     init(vorne: String, bildID: Int, position: CGRect, spiel: ViewController) {
         // den Initialisierer der Basisklasse aufrufen
@@ -77,6 +80,9 @@ class MemoryKarte: NSButton {
     override init(frame: NSRect) {
         super.init(frame: frame)
     }
+    
+    
+    // MARK: - Die Methoden
     
     // die Methode für das Anklicken
     @objc func buttonClicked() {
