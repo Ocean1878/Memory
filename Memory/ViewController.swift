@@ -179,6 +179,13 @@ class ViewController: NSViewController {
             Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(karteSchliessen), userInfo: nil, repeats: false)
         }
         
+        // Wenn der Spieler dran ist und bereits eine Karte umgedreht hat
+        // wird der Schummeltaste deaktieviert
+        if spieler == 0 && umgedrehteKarten == 1 {
+            schummelTaste.isEnabled = false
+        }
+        
+        // Meldungen beim Ende des Spiels
         if (menschPunkte > computerPunkte) && (computerPunkte + menschPunkte == 21) {
             // Dialog
             meinDialog(header: "Hinweis", text: "Sie haben Gewonnen \n\nIhr Punktestand: \(labelPaareMensch.integerValue)\n\nPunktestand Gegner: \(labelPaareComputer.integerValue) \n\nDas Spiel ist vorbei!")
@@ -248,11 +255,15 @@ class ViewController: NSViewController {
     // Spielerwechsel
     func spielerWechseln() {
         // wenn der Mensch an der Reihe war, kommt jetzt der Computer
+        // Die Schummeltaste wird jedes mal aktiviert, wenn der Anwender
+        // am Zug ist und nicht der Computer
         if spieler == 0 {
+            schummelTaste.isEnabled = false
             spieler = 1
             computerZug()
         } else {
             spieler = 0
+            schummelTaste.isEnabled = true
         }
     }
     
@@ -390,6 +401,7 @@ class ViewController: NSViewController {
             if card.getNochImSpiel() && !card.getUmgedreht() {
                 card.vorderseiteZeigen()
             }
+            
         }
         
         // blende den Button aus bevor der Timer startet
@@ -399,7 +411,7 @@ class ViewController: NSViewController {
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(schummel), userInfo: nil, repeats: false)
     }
     
-    @IBAction func neustartClicked(_ sender: Any) {
+    @IBAction func closeClicked(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
     
